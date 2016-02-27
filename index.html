@@ -1,0 +1,138 @@
+<!DOCTYPE  html>
+<html leng="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="keywords" content="holidays, trips, places to go">
+
+
+
+  <link rel="icon" type="image/png" href="defaultprofile.png">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" type="text/css" href="datepicker.css">
+
+ 
+
+
+  
+  <script type="text/javascript" src="js/scroll-to.js"></script>
+  <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+
+  
+
+
+
+ </head>
+ <body>
+
+<div id="principal">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><img src="defaultprofile.png" id="brand-logo"></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" class="navbar-link" id="scroll-home"><span class="glyphicon glyphicon-home" id="scroll-home"></span><span class="sr-only">(current)</span></a></li>
+          <li><a href="#how-it-works" class="navbar-link" id="scroll-how-it-works"><span class="glyphicon glyphicon-cog" id="scroll-how-it-works"></span></a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+
+
+
+  <!--Start of the body after navigation bar-->
+  <div id="div-center">
+  	<h1>HACKLONDON</h1>
+  	<form action="" method="post" id="lookform" accept-charset="UTF-8">
+        <input type="text" placeholder="WHERE ARE YOU GOING?" class="biginput" name="location" id="autocomplete">
+		<h3>DAY</h3>
+        <div class="hero-unit">
+            <input  type="text" placeholder="WHEN ARE YOU GOING?"  id="example1">
+        </div>
+        <h3>NUMBER OF DAYS</h3>
+        <input type="number" placeholder="1" id="number-input" min="1" max="500">
+        <input type="submit" value="Search"id="submit-button">
+
+	</form>
+  </div>
+</div>
+
+
+
+
+
+  <!--Second part how does it work!-->
+  <div id="how-it-works">
+  	<h1>HOW DOES IT WORK?</h1>
+  		<div id="step-container">
+		  	<div id="first" class="div-step">
+		  		<h1>1</h1>
+		  		<h2>SEARCH A PLACE</h2>
+		  		<span class="glyphicon glyphicon-search"></span>
+		  	</div>
+		  	<div id="second" class="div-step">
+		  		<h1>2</h1>
+		  		<h2>CHOOSE A PLAN</h2>
+		  		<span class="glyphicon glyphicon-tasks"></span>	
+		  	</div>
+		  	<div id="third" class="div-step">
+		  		<h1>3</h1>
+		  		<h2>ENJOY IT!</h2>
+		  		<span class="glyphicon glyphicon-thumbs-up"></span>		
+		  	</div>
+		</div>
+  </div>
+
+
+
+
+
+
+
+	<!--Display results here!-->
+
+  <div id="display-results">
+		<div id="result-square">
+			<h1>CHOOSE YOUR FAVOURITE!</h1>
+			<div id="individual-result">
+				
+			</div>
+			<div id="individual-result">
+				
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript">
+    // When the document is ready
+    $(document).ready(function () {                
+        $('#example1').datepicker({
+            format: "dd/mm/yyyy"
+        });            
+    });
+</script>
+
+ </body>
+ </html>
