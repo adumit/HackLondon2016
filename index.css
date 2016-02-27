@@ -97,7 +97,7 @@ body{
 .autocomplete-selected { background: #f0f0f0; }
 .autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }
 
-form .biginput {
+div .biginput {
   width: 60%;
   height: 60px;
   padding: 0 10px 0 10px;
@@ -117,7 +117,7 @@ form .biginput {
   border-radius: 0.5em;
   font-family: Roboto;
 }
-form .biginput:focus {
+div .biginput:focus {
   color: rgba(86,125,146, 0.9);
 }
 
