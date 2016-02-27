@@ -19,7 +19,6 @@
   <script type="text/javascript" src="js/scroll-to.js"></script>
   <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
   <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.3&libraries=places"></script>
   <script type="text/javascript" src="js/path-finder.js"></script>
 
 
@@ -61,14 +60,14 @@
   <div id="div-center">
   	<h1>HACKLONDON</h1>
   	<form action="" method="post" id="lookform" accept-charset="UTF-8">
-        <input type="text" onFocus="geolocate()" placeholder="WHERE ARE YOU GOING?" class="biginput" name="location" id="autocomplete">
+        <input type="text" onkeydown="geolocate()" onsubmit="return false" placeholder="WHERE ARE YOU GOING?" class="biginput" name="location" id="autocomplete">
 		<h3>DAY</h3>
         <div class="hero-unit">
             <input  type="text" placeholder="WHEN ARE YOU GOING?"  id="example1">
         </div>
         <h3>NUMBER OF DAYS</h3>
         <input type="number" placeholder="1" id="number-input" min="1" max="500">
-        <input type="submit" value="Search"id="submit-button">
+        <input type="submit" onsubmit="assignVariables()" value="Search"id="submit-button">
 
 	</form>
   <div id="map" style="visibility:hidden"></div>
@@ -208,6 +207,5 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAr9mZwlI15iSbYTPZtyG8sKx5QZfb_SnE&signed_in=true&libraries=places&callback=initAutocomplete"
         async defer></script>
-
- </body>
- </html>
+  </body>
+</html>

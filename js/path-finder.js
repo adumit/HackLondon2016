@@ -1,6 +1,18 @@
 var map;
 var placeArray = [];
 
+var latitude, longitude;
+
+function assignVariables(){
+  var placeInput = document.getElementById('autocomplete');
+  latitude = placeInput.getPlace().geometry.location.lat();
+  longitude = placeInput.getPlace().geometry.location.lng();
+  initialize(latitude, longitude);
+  setTimeout(function(){
+    planTrip(placeArray)
+  }, 1000);
+}
+
 function initialize(latitude, longitude) {
   
   var pos = new google.maps.LatLng(47.53747, -122.1160);
@@ -55,7 +67,6 @@ function getPlace(place) {
   }
 }
 
-initialize(51.5033, -0.1197);
 
 function filterPlaceArray(entry) {
   return entry.rating > 0;
@@ -73,12 +84,11 @@ function getOnlyUnique(pArray) {
   return distinct;
 }
 
-setTimeout(function(){
-  planTrip(placeArray)
-}, 1000);
+
 
 function planTrip(placeArray) {
   placeArrayFiltered = placeArray.filter(filterPlaceArray);
   placeArrayFiltered2 = getOnlyUnique(placeArrayFiltered);
   console.log(placeArrayFiltered2);
 }
+
