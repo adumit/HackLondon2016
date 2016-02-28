@@ -85,6 +85,9 @@ body{
 	margin-top: 1.5em;
 	width: 6em;
 	height: 2.5em;
+	font-family: Roboto;
+	border-radius: 4px;
+	border: none;
 }
 
 
