@@ -5,6 +5,8 @@ var countryArray = [{"CountryName":"Austria", "Array": [{"Cityname":"Vienna","la
 
 var latitude, longitude;
 var cityValueArray = [];
+var finalPlan = [];
+var numDays;
 
 var placeSearch, autocomplete;
     var componentForm = {
@@ -45,6 +47,8 @@ function geolocate() {
 function assignVariables(){
   latitude = autocomplete.getPlace().geometry.location.lat();
   longitude = autocomplete.getPlace().geometry.location.lng();
+  numDays = document.getElementById('number-input').value;
+  console.log("numDays = " + String(numDays));
   initialize(latitude, longitude);
   setTimeout(function(){
     planTrip(placeArray, autocomplete.getPlace().name, latitude, longitude, "Austria");
@@ -84,48 +88,99 @@ var allPlaceArray = [placeArray2, placeArray3, placeArray4, placeArray5, placeAr
 function planTrip(placeArray, nameOfCity, lat, lon, country) {
   cityValueArray = [];
   filteredOriginCityArray = performFiltering(placeArray);
-  cityValueArray.push({"name": nameOfCity, "rank" : rankCity(filteredOriginCityArray), "currentDistance": 0.0});
+  cityNames = [];
   cArray = countryArray[0].Array;
+  for (var city in cArray) {
+    cityNames.push(cArray[city].Cityname);
+  }
+  if (cityNames.indexOf(nameOfCity) == -1)  {
+    cityValueArray.push({"name": nameOfCity, "rank" : rankCity(filteredOriginCityArray), "currentDistance": 0.0});
+  }
   setTimeout(function(){
     citiesMakeRequest(cArray, 2);
-  }, 1000*2);
+  }, 600*2);
   setTimeout(function(){
     citiesMakeRequest(cArray, 3);
-  }, 1000*3);
+  }, 600*3);
   setTimeout(function(){
     citiesMakeRequest(cArray, 4);
-  }, 1000*4);
+  }, 600*4);
   setTimeout(function(){
     citiesMakeRequest(cArray, 5);
-  }, 1000*5);
+  }, 600*5);
   setTimeout(function(){
     citiesMakeRequest(cArray, 6);
-  }, 1000*6);
+  }, 600*6);
   setTimeout(function(){
     citiesMakeRequest(cArray, 7);
-  }, 1000*7);
+  }, 600*7);
   setTimeout(function(){
     citiesMakeRequest(cArray, 8);
-  }, 1000*8);
+  }, 600*8);
   setTimeout(function(){
     citiesMakeRequest(cArray, 9);
-  }, 1000*9);
+  }, 600*9);
   setTimeout(function(){
     citiesMakeRequest(cArray, 10);
-  }, 1000*10);
+  }, 600*10);
   setTimeout(function() {
     planTripHelper(cArray, lat, lon);
     console.log(cityValueArray);
-  }, 11000);
-
+  }, 7000);
+  setTimeout(function() {
+    makeRoute(cityValueArray, performFiltering(placeArray), nameOfCity);
+  }, 7500);
+  setTimeout(function() {
+    console.log(finalPlan);
+  }, 8500);
 }
 
 function planTripHelper(cArray, lat, lon) {
-  console.log(allPlaceArray);
   for (var whichCity in allPlaceArray) {
     if (allPlaceArray[whichCity].length > 0) {
-      cityValueArray.push({"name": cArray[whichCity].Cityname, "rank": rankCity(performFiltering(allPlaceArray[whichCity])), "currentDistance": distCalc(lat, lon, cArray[whichCity].lat, cArray[whichCity].lon)});
+      cityValueArray.push({"name": cArray[whichCity].Cityname, "rank": rankCity(performFiltering(allPlaceArray[whichCity])), "currentDistance": distCalc(lat, lon, cArray[whichCity].lat, cArray[whichCity].lon), "whichArray": whichCity});
     }
+  }
+}
+
+function makeRoute(cityValArray, curArray, curCity) {
+  if (finalPlan.length >= numDays) {
+    return;
+  }
+  var currentArray = curArray.sort(function(a,b) {
+      return b.rating - a.rating;
+  });
+  finalPlan.push(currentArray[0]);
+  var curRankingValue;
+  for (var city in cityValArray) {
+    if (cityValArray[city].name == curCity) {
+      cityValArray[city].rank -= 2.0*currentArray[0].rating;
+      curRankingValue = cityValArray[city].rank;
+      break;
+    }
+  }
+  var condition = true;
+  for (var altCity in cityValArray) {
+    if (cityValArray[altCity].rank/Math.max(1.0, Math.sqrt(cityValArray[altCity].currentDistance)) > curRankingValue) {
+      condition = false;
+      finalPlan.push({"lat": undefined, "lon": undefined, "name": "Travel from " + curCity + " to " + cityValArray[altCity].name + "."});
+      for (var rmCity in cityValArray) {
+        if (cityValArray[rmCity].name == curCity) {
+          cityValArray.splice(rmCity, 1);
+          break;
+        }
+        else {
+          cityValArray[rmCity].currentDistance = distCalc(cityValArray[altCity].lat, cityValArray[altCity].lon, cityValArray[rmCity].lat, cityValArray[rmCity].lon);
+        }
+      }
+      makeRoute(cityValArray, performFiltering(allPlaceArray[cityValArray[altCity - 1].whichArray]), cityValArray[altCity - 1].name);
+    }
+  }
+  if (condition || finalPlan.length >= numDays) {
+    makeRoute(cityValArray, performFiltering(curArray.slice(1,curArray.length)), curCity);
+  }
+  else {
+    return;
   }
 }
 
@@ -152,8 +207,8 @@ function initialize(latitude, longitude) {
 }
 
 function makeRequest(lat, lon) {
-  for (i = lat - 0.09; i <= lat + 0.09; i += 0.036) {
-      for (j = lon - 0.09; j <= lon + 0.09; j += 0.036) {
+  for (i = lat - 0.09; i <= lat + 0.09; i += 0.018) {
+      for (j = lon - 0.09; j <= lon + 0.09; j += 0.018) {
         var newPos = new google.maps.LatLng(lat, lon);
         var request = {
             location: newPos,
