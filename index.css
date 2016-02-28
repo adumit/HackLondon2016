@@ -166,7 +166,8 @@ div .biginput:focus {
 	margin-left: 6.5em;
 }
 #third{
-	float: right;
+	float: left;
+	margin-left: 6.5em;
 }
 #first h1{
 	margin-top: -3.5em;

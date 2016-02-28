@@ -77,18 +77,18 @@ $("#scroll-home").click(function() {
 
   <!--Start of the body after navigation bar-->
   <div id="div-center">
-  	<h1>EuroSherpa</h1>
-  	<div id="lookform">
+    <h1>EuroSherpa</h1>
+    <div id="lookform">
         <input type="text" onsubmit="return false" placeholder="WHERE DO YOU WISH TO GO?" class="biginput" name="location" id="autocomplete">
-		<h3>DAY</h3>
+    <h3>DATE OF DEPARTURE</h3>
         <div class="hero-unit">
-            <input  type="text" placeholder="WHEN ARE YOU GOING?"  id="example1">
+            <input  type="text" placeholder="SELECT DATE"  id="example1">
         </div>
-        <h3>NUMBER OF DAYS THERE?</h3>
+        <h3>NUMBER OF DAYS OF TRAVEL</h3>
         <input type="number" placeholder="1" id="number-input" value="1" min="1" max="500">
-        <a href="#display-results"><input type="submit" onclick="assignVariables()" value="Search"id="submit-button"></a>
+        <a href="#display-results"><input type="submit" onclick="assignVariables()" value="Go!"id="submit-button"></a>
 
-	</div>
+  </div>
   <div id="map" style="visibility:hidden"></div>
   </div>
 </div>
@@ -99,24 +99,24 @@ $("#scroll-home").click(function() {
 
   <!--Second part how does it work!-->
   <div id="how-it-works">
-  	<h1>HOW DOES IT WORK?</h1>
-  		<div id="step-container">
-		  	<div id="first" class="div-step">
-		  		<h1>1</h1>
-		  		<h2>SEARCH A PLACE</h2>
-		  		<span class="glyphicon glyphicon-search"></span>
-		  	</div>
-		  	<div id="second" class="div-step">
-		  		<h1>2</h1>
-		  		<h2>CHOOSE A PLAN</h2>
-		  		<span class="glyphicon glyphicon-tasks"></span>	
-		  	</div>
-		  	<div id="second" class="div-step">
-		  		<h1>3</h1>
-		  		<h2>ENJOY IT!</h2>
-		  		<span class="glyphicon glyphicon-thumbs-up"></span>		
-		  	</div>
-		</div>
+    <h1>HOW DOES IT WORK?</h1>
+      <div id="step-container">
+        <div id="first" class="div-step">
+          <h1>1</h1>
+          <h2>SEARCH PLACE</h2>
+          <span class="glyphicon glyphicon-search"></span>
+        </div>
+        <div id="second" class="div-step">
+          <h1>2</h1>
+          <h2>CHECK ROUTE</h2>
+          <span class="glyphicon glyphicon-ok"></span> 
+        </div>
+        <div id="third" class="div-step">
+          <h1>3</h1>
+          <h2>ENJOY!</h2>
+          <span class="glyphicon glyphicon-thumbs-up"></span>   
+        </div>
+    </div>
   </div>
 
 
@@ -125,14 +125,14 @@ $("#scroll-home").click(function() {
 
 
 
-	<!--Display results here!-->
+  <!--Display results here!-->
 
   <div id="display-results">
-		<div id="result-square">
-			<h1>Your Adventure is Waiting!</h1>
+    <div id="result-square">
+      <h1>Your Adventure is Waiting!</h1>
       
-		</div>
-	</div>
+    </div>
+  </div>
 
 
 
