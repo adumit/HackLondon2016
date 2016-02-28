@@ -484,6 +484,7 @@ function printToHtml(finalPlan) {
     div1.appendChild(resultRank);
 
   }
+  document.getElementById('display-results').style.display = 'initial';
 
   $('html, body').animate({
         scrollTop: $("#display-results").offset().top
