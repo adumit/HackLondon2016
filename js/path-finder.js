@@ -34,9 +34,13 @@ var placeSearch, autocomplete;
 function initAutocomplete() {
   // Create the autocomplete object, restricting the search to geographical
   // location types.
-  autocomplete = new google.maps.places.Autocomplete(
-      /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-      {types: ['geocode']});
+  var defaultBounds = new google.maps.LatLngBounds(
+    new google.maps.LatLng(35.0, -11.0),
+    new google.maps.LatLng(72.0, 29.0));
+  autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')), 
+    {componentRestrictions: defaultBounds, types: ['geocode']});
+  autocomplete.setBounds(defaultBounds);
+  console.log(autocomplete.getBounds());
 }
 
 // Bias the autocomplete object to the user's geographical location,
@@ -52,7 +56,6 @@ function geolocate() {
         center: geolocation,
         radius: position.coords.accuracy
       });
-      autocomplete.setBounds(circle.getBounds());
     });
   }
 }
