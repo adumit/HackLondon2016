@@ -485,5 +485,9 @@ function printToHtml(finalPlan) {
 
   }
 
+  $('html, body').animate({
+        scrollTop: $("#display-results").offset().top
+    }, 1000);
+
 }
 
