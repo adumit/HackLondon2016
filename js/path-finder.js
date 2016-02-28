@@ -131,7 +131,7 @@ function planTrip(placeArray, nameOfCity, lat, lon, country) {
     makeRoute(cityValueArray, performFiltering(placeArray), nameOfCity);
   }, 7500);
   setTimeout(function() {
-    console.log(finalPlan);
+    printToHtml(finalPlan);
   }, 8500);
 }
 
@@ -408,5 +408,36 @@ function getOnlyUnique(pArray) {
     unique[pArray[i].name] = 0;
   }
   return distinct;
+}
+
+
+function printToHtml(finalPlan) {
+  var div1 = document.createElement('div');
+  div1.setAttribute('id','individual-result');
+  var displaydivs = document.getElementById('result-square');
+  displaydivs.appendChild(div1);
+
+  var resultPlace = document.createElement('h2');
+  var resultRank = document.createElement('h2');
+
+  resultPlace.setAttribute('id','result-place');
+  resultRank.setAttribute('id','result-rank');
+
+  resultPlace.innerHTML = "Result of the place: " + finalPlan[0][0].place;
+  resultRank.innerHTML = "Ranking of the place: " + finalPlan[0][0].rank;
+
+  div1.appendChild(resultPlace);
+  div1.appendChild(resultRank);
+
+  var form = document.createElement("form");
+  form.setAttribute('method',"get");
+  form.setAttribute('action',"https://www.google.com/#q=" + finalPlan[0][0].place);
+  form.setAttribute('value', finalPlan[0][0].name);
+  div1.appendChild(form);
+
+  var submit = document.createElement("input");
+  submit.setAttribute('type','submit');
+  submit.setAttribute('value','Google search');
+  div1.appendChild(submit);
 }
 
