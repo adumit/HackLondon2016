@@ -1,19 +1,7 @@
 var map;
 var placeArray = [];
 
-var countryArray = 
-[{"CountryName":"Austria","Array":[{"Cityname":"Vienna","lat":48.208174,"lon":16.373819},{"Cityname":"Salzburg","lat":47.809490,"lon":13.055010},{"Cityname":"Innsbruck","lat":47.269212,"lon":11.404102},{"Cityname":"Zell am See","lat":47.323520,"lon":12.796850},{"Cityname":"hallstatt","lat":47.562234,"lon":13.649262},{"Cityname":"linz","lat":48.306940,"lon":14.285830},{"Cityname":"Graz","lat":47.070714,"lon":15.439504},{"Cityname":"Seefeld","lat":47.330002,"lon":11.187774},{"Cityname":"Bregenz","lat":47.500750,"lon":9.742310},{"Cityname":"Ischgl","lat":47.011845,"lon":10.288420}]},
-{"CountryName":"Belgium","Array":[{"Cityname":"Bruges","lat":51.209348,"lon":3.224700},{"Cityname":"Brussels","lat":50.850340,"lon":4.351710},{"Cityname":"Antwerp","lat":51.219448,"lon":4.402464},{"Cityname":"Ghent","lat":51.054342,"lon":3.717424},{"Cityname":"Ypres","lat":50.849227,"lon":2.877939},{"Cityname":"Ostend","lat":51.215430,"lon":2.928656},{"Cityname":"Dinant","lat":50.260494,"lon":4.912746},{"Cityname":"Bastogne","lat":50.000506,"lon":5.715280},{"Cityname":"Namur","lat":50.467388,"lon":4.871985},{"Cityname":"Liege","lat":50.632557,"lon":5.579666},{"Cityname":"Tournai","lat":50.605648,"lon":3.387934}]},
-{"CountryName":"Bulgaria","Array":[{"Cityname":"Sofia","lat":42.697708,"lon":23.321868},{"Cityname":"Plovdiv","lat":42.135408,"lon":24.745290},{"Cityname":"Sunny Beach","lat":42.695152,"lon":27.710421},{"Cityname":"varna","lat":43.214050,"lon":27.914733},{"Cityname":"Bansko","lat":41.840424,"lon":23.485653},{"Cityname":"Burgas","lat":42.504793,"lon":27.462636},{"Cityname":"nesebar","lat":42.660137,"lon":27.720559},{"Cityname":"Sozopol","lat":42.417263,"lon":27.696175},{"Cityname":"Albena","lat":43.367819,"lon":28.080069},{"Cityname":"veliko tarnovo","lat":43.075674,"lon":25.617151}]},
-{"CountryName":"Croatia","Array":[{"Cityname":"Dubrovnik","lat":42.650661,"lon":18.094424},{"Cityname":"zagreb","lat":45.815011,"lon":15.981919},{"Cityname":"Split","lat":43.508132,"lon":16.440193},{"Cityname":"Plitvice Lakes National Park","lat":44.865397,"lon":15.582012},{"Cityname":"zadar","lat":44.119371,"lon":15.231365},{"Cityname":"pula","lat":44.866623,"lon":13.849579},{"Cityname":"Hvar","lat":43.172948,"lon":16.441114},{"Cityname":"rovinj","lat":45.081166,"lon":13.638707},{"Cityname":"Krka national park","lat":43.866602,"lon":15.972484},{"Cityname":"Trogir","lat":43.866602,"lon":15.972484}]},
-{"CountryName":"Republic of Cyprus","Array":[{"Cityname":"Paphos","lat":34.772013,"lon":32.429737},{"Cityname":"Ayia napa","lat":34.992284,"lon":34.014011},{"Cityname":"Larnaca","lat":34.900253,"lon":33.623172},{"Cityname":"Limassol","lat":34.707130,"lon":33.022617},{"Cityname":"nicosia","lat":35.040016,"lon":33.123905},{"Cityname":"protaras","lat":35.001180,"lon":34.047435},{"Cityname":"Kyrenia","lat":35.299194,"lon":33.236325},{"Cityname":"famagusta","lat":35.285702,"lon":33.841129},{"Cityname":"polis","lat":35.032173,"lon":32.418411},{"Cityname":"pissouri","lat":34.664437,"lon":32.706843}]},
-{"CountryName":"Czech Republic","Array":[{"Cityname":"Prague","lat":50.075538,"lon":14.437800},{"Cityname":"cesky krumlov","lat":48.812735,"lon":14.317466},{"Cityname":"karlvy vary","lat":50.231852,"lon":12.871962},{"Cityname":"brno","lat":49.195060,"lon":16.606837},{"Cityname":"kutna hora","lat":49.952431,"lon":15.268654},{"Cityname":"marianske lazne","lat":49.964599,"lon":12.701198},{"Cityname":"lusatian neisse","lat":51.395734,"lon":14.871732},{"Cityname":"telc","lat":49.183238,"lon":15.454273},{"Cityname":"sumava national park","lat":48.972027,"lon":13.633135},{"Cityname":"south moravian region","lat":48.954453,"lon":16.767690}]},
-{"CountryName":"Denmark","Array":[{"Cityname":"copenhagen","lat":55.676097,"lon":12.568337},{"Cityname":"billund","lat":55.728449,"lon":9.112366},{"Cityname":"bornholm","lat":55.160428,"lon":14.866884},{"Cityname":"jutland","lat":55.629550,"lon":9.201050},{"Cityname":"aero","lat":54.858903,"lon":10.387481},{"Cityname":"skagen","lat":57.725004,"lon":10.579186},{"Cityname":"aarhus","lat":56.162939,"lon":10.203921},{"Cityname":"odense","lat":55.403756,"lon":10.402370},{"Cityname":"aalborg","lat":57.048820,"lon":9.921747},{"Cityname":"zealand","lat":55.463252,"lon":11.721498}]},
-{"CountryName":"Estonia","Array":[{"Cityname":"tallinn","lat":59.436961,"lon":24.753575},{"Cityname":"saaremaa","lat":58.484972,"lon":22.613641},{"Cityname":"lahemaa national Park","lat":59.545504,"lon":25.802855},{"Cityname":"parnu","lat":58.385808,"lon":24.496577},{"Cityname":"soomaa national park","lat":58.488793,"lon":24.982437},{"Cityname":"tartu","lat":58.377625,"lon":26.729006},{"Cityname":"matsalu national park","lat":58.756222,"lon":23.482761},{"Cityname":"narva","lat":59.379680,"lon":28.179133},{"Cityname":"kuressaare","lat":58.252923,"lon":22.485041},{"Cityname":"Paldiski","lat":59.352875,"lon":24.055161}]},
-{"CountryName":"Finland","Array":[{"Cityname":"helsinki","lat":60.169856,"lon":24.938379},{"Cityname":"rovaniemi","lat":66.503948,"lon":25.729391},{"Cityname":"ivalo","lat":68.657642,"lon":27.539706},{"Cityname":"saariselka","lat":68.419664,"lon":27.410003},{"Cityname":"turku","lat":60.451813,"lon":22.266630},{"Cityname":"tampere","lat":61.497752,"lon":23.760954},{"Cityname":"porvoo","lat":60.393192,"lon":25.665274},{"Cityname":"savonlinna","lat":61.867973,"lon":28.886384},{"Cityname":"kuusamo","lat":65.964588,"lon":29.188665},{"Cityname":"kittila","lat":67.650732,"lon":24.915820}]},
-{"CountryName":"France","Array":[{"Cityname":"Paris","lat":48.856614,"lon":2.352222},{"Cityname":"Nice","lat":43.710173,"lon":7.261953},{"Cityname":"marseille","lat":43.296482,"lon":5.369780},{"Cityname":"bordeaux","lat":44.837789,"lon":-0.579180},{"Cityname":"Strasbourg","lat":48.573405,"lon":7.752111},{"Cityname":"Burgundy","lat":47.052505,"lon":4.383721},{"Cityname":"Avingnon","lat":43.949317,"lon":4.805528},{"Cityname":"chamonix","lat":45.923697,"lon":6.869433},{"Cityname":"Lyon","lat":45.764043,"lon":4.835659},{"Cityname":"Dijon","lat":47.322047,"lon":5.041480}]},
-{"CountryName":"Germany","Array":[{"Cityname":"Berlin","lat":52.520007,"lon":13.404954},{"Cityname":"Frankfurt","lat":50.110922,"lon":8.682127},{"Cityname":"Munich","lat":48.135125,"lon":11.581981},{"Cityname":"hamburg","lat":53.551085,"lon":9.993682},{"Cityname":"nuremberg","lat":49.452030,"lon":11.076750},{"Cityname":"heidelberg","lat":49.398752,"lon":8.672434},{"Cityname":"dresden","lat":51.050409,"lon":13.737262},{"Cityname":"cologne","lat":50.937531,"lon":6.960279},{"Cityname":"dusseldorf","lat":51.227741,"lon":6.773456},{"Cityname":"Garmisch-partenkirchen","lat":47.491695,"lon":11.095498}]},
-{"CountryName":"Greece","Array":[{"Cityname":"Athens","lat":37.983917,"lon":23.729360},{"Cityname":"Santorini","lat":36.393156,"lon":25.461509},{"Cityname":"Rhodes","lat":36.434963,"lon":28.217483},{"Cityname":"Kos","lat":36.891506,"lon":27.287723},{"Cityname":"zakynthos island","lat":37.788160,"lon":20.898827},{"Cityname":"thessalonki","lat":40.640063,"lon":22.944419},{"Cityname":"heraklion","lat":35.338735,"lon":25.144213},{"Cityname":"naxos","lat":37.102103,"lon":25.376114},{"Cityname":"chania","lat":35.513830,"lon":24.018037},{"Cityname":"Delphi","lat":38.480057,"lon":22.494062}]}];
+var countryArray = [{"CountryName":"Austria", "Array": [{"Cityname":"Vienna","lat":48.208174,"lon":16.373819},{"Cityname":"Salzburg","lat":47.809490,"lon":13.055010},{"Cityname":"Innsbruck","lat":47.269212,"lon":11.404102},{"Cityname":"Zell am See","lat":47.323520,"lon":12.796850},{"Cityname":"hallstatt","lat":47.562234,"lon":13.649262},{"Cityname":"linz","lat":48.306940,"lon":14.285830},{"Cityname":"Graz","lat":47.070714,"lon":15.439504},{"Cityname":"Seefeld","lat":47.330002,"lon":11.187774},{"Cityname":"Ischgl","lat":47.011845,"lon":10.288420}]}];
 
 var latitude, longitude;
 var cityValueArray = [];
@@ -56,36 +44,14 @@ function geolocate() {
   }
 }
 
-function getCountry(latitude, longitude) {
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 8,
-    center: {lat: 40.731, lng: -73.997}
-  });
-  var latlng = {lat: latitude, lng: longitude};
-  var countryVar;
-  var geocoder = new google.maps.Geocoder;
-  geocoder.geocode({'location': latlng}, function(results, status) {
-    if (status === google.maps.GeocoderStatus.OK) {
-      for (var res in results) {
-        if (results[res].types.indexOf("country") > -1) {
-          countryVar = results[res].formatted_address;
-        }
-      }
-    }
-  });
-  return countryVar;
-}
-
 function assignVariables(){
   latitude = autocomplete.getPlace().geometry.location.lat();
   longitude = autocomplete.getPlace().geometry.location.lng();
   numDays = document.getElementById('number-input').value;
-  cntry = getCountry(latitude, longitude);
   console.log("numDays = " + String(numDays));
   initialize(latitude, longitude);
   setTimeout(function(){
-    console.log(autocomplete.getPlace().name);
-    planTrip(placeArray, autocomplete.getPlace().name, latitude, longitude, cntry);
+    planTrip(placeArray, autocomplete.getPlace().name, latitude, longitude, "Austria");
   }, 1000);
 }
 
@@ -132,41 +98,41 @@ function planTrip(placeArray, nameOfCity, lat, lon, country) {
   }
   setTimeout(function(){
     citiesMakeRequest(cArray, 2);
-  }, 400*2);
+  }, 600*2);
   setTimeout(function(){
     citiesMakeRequest(cArray, 3);
-  }, 400*3);
+  }, 600*3);
   setTimeout(function(){
     citiesMakeRequest(cArray, 4);
-  }, 400*4);
+  }, 600*4);
   setTimeout(function(){
     citiesMakeRequest(cArray, 5);
-  }, 400*5);
+  }, 600*5);
   setTimeout(function(){
     citiesMakeRequest(cArray, 6);
-  }, 400*6);
+  }, 600*6);
   setTimeout(function(){
     citiesMakeRequest(cArray, 7);
-  }, 400*7);
+  }, 600*7);
   setTimeout(function(){
     citiesMakeRequest(cArray, 8);
-  }, 400*8);
+  }, 600*8);
   setTimeout(function(){
     citiesMakeRequest(cArray, 9);
-  }, 400*9);
+  }, 600*9);
   setTimeout(function(){
     citiesMakeRequest(cArray, 10);
-  }, 400*10);
+  }, 600*10);
   setTimeout(function() {
     planTripHelper(cArray, lat, lon);
     console.log(cityValueArray);
-  }, 4500);
+  }, 7000);
   setTimeout(function() {
     makeRoute(cityValueArray, performFiltering(placeArray), nameOfCity);
-  }, 4900);
+  }, 7500);
   setTimeout(function() {
     printToHtml(finalPlan);
-  }, 5600);
+  }, 8500);
 }
 
 function planTripHelper(cArray, lat, lon) {
@@ -237,6 +203,7 @@ function initialize(latitude, longitude) {
     }
   });
   makeRequest(latitude, longitude);
+
 }
 
 function makeRequest(lat, lon) {
@@ -425,8 +392,7 @@ function filterPlaceArray(entry) {
 String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
 
 function filterPlaces(entry) {
-  var lowerEntry = entry.name.toLowerCase();
-  if (lowerEntry.contains("hotel") | lowerEntry.contains("universi")) {
+  if (entry.name.toLowerCase().contains("hotel")) {
     return false;
   }
   return true;
@@ -447,6 +413,7 @@ function getOnlyUnique(pArray) {
 
 function printToHtml(finalPlan) {
 
+  document.getElementById('display-results').style.display = 'initial';
   for(var index = 0; index < finalPlan.length; index++)
   {
 
@@ -464,25 +431,32 @@ function printToHtml(finalPlan) {
     resultPlace.setAttribute('id','result-place');
     resultRank.setAttribute('id','result-rank');
 
-    if (placeRating != undefined) {
-      var replaced = placeName.replace(/\s{2,}/g,"").replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-      var href = 'https://www.google.co.uk/search?q=' + replaced;
-      resultPlace.innerHTML = "Day " + (index + 1) + ": " + "<a href='" + href + "' target='_blank'>" + placeName.replace(/\s{2,}/g," "); + "</a>";
-      resultRank.innerHTML = "Rating on Google: " + placeRating;
-    }
-    else {
-      var replaced = placeName.split(' from ')[1].split(" to ");
-      var from = replaced[0];
-      var to = replaced[1];
-      to_fixed = to.slice(0, to.length - 1);
-      var href = 'https://www.google.co.uk/maps/dir/' + from + "/" + "+to+" + to;
-      resultPlace.innerHTML = "Day " + (index + 1) + ": " + "<a href='" + href + "' target='_blank'>" + placeName.replace(/\s{2,}/g," "); + "</a>";
+    resultPlace.innerHTML = "Result of the place: " + placeName;
+    if (placeRating != 'undefined') {
+      resultRank.innerHTML = "Ranking of the place: " + placeRating;
     }
 
     div1.appendChild(resultPlace);
     div1.appendChild(resultRank);
 
+    
+
+    var link = document.createElement("a");
+    var linkText = document.createTextNode("Look the place");
+    link.appendChild(linkText);
+
+    var replaced = placeName.split(' ').join('_');
+
+    link.href = 'https://es.wikipedia.org/wiki/' + replaced;
+    link.title = 'Look the place!';
+
+    div1.appendChild(link);
+
+
   }
+  $('html, body').animate({
+        scrollTop: $("#display-results").offset().top
+    }, 800);
 
 }
 
