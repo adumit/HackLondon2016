@@ -412,32 +412,45 @@ function getOnlyUnique(pArray) {
 
 
 function printToHtml(finalPlan) {
-  var div1 = document.createElement('div');
-  div1.setAttribute('id','individual-result');
-  var displaydivs = document.getElementById('result-square');
-  displaydivs.appendChild(div1);
 
-  var resultPlace = document.createElement('h2');
-  var resultRank = document.createElement('h2');
+  for(var index = 0; index < finalPlan.length; index++)
+  {
 
-  resultPlace.setAttribute('id','result-place');
-  resultRank.setAttribute('id','result-rank');
+    var div1 = document.createElement('div');
+    div1.setAttribute('id','individual-result');
+    var displaydivs = document.getElementById('result-square');
+    displaydivs.appendChild(div1);
 
-  resultPlace.innerHTML = "Result of the place: " + finalPlan[0][0].place;
-  resultRank.innerHTML = "Ranking of the place: " + finalPlan[0][0].rank;
+    placeName = finalPlan[index].name;
+    placeRating = finalPlan[index].rating;
 
-  div1.appendChild(resultPlace);
-  div1.appendChild(resultRank);
+    var resultPlace = document.createElement('h2');
+    var resultRank = document.createElement('h2');
 
-  var form = document.createElement("form");
-  form.setAttribute('method',"get");
-  form.setAttribute('action',"https://www.google.com/#q=" + finalPlan[0][0].place);
-  form.setAttribute('value', finalPlan[0][0].name);
-  div1.appendChild(form);
+    resultPlace.setAttribute('id','result-place');
+    resultRank.setAttribute('id','result-rank');
 
-  var submit = document.createElement("input");
-  submit.setAttribute('type','submit');
-  submit.setAttribute('value','Google search');
-  div1.appendChild(submit);
+    resultPlace.innerHTML = "Result of the place: " + placeName;
+    if (placeRating != 'undefined') {
+      resultRank.innerHTML = "Ranking of the place: " + placeRating;
+    }
+
+    div1.appendChild(resultPlace);
+    div1.appendChild(resultRank);
+
+    
+
+    var link = document.createElement("a");
+    var linkText = document.createTextNode("Look the place");
+    link.appendChild(linkText);
+
+    var replaced = placeName.split(' ').join('_');
+
+    link.href = 'https://es.wikipedia.org/wiki/' + replaced;
+    link.title = 'Look the place!';
+
+    div1.appendChild(link);
+  }
+
 }
 
