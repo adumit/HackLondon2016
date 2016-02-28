@@ -465,7 +465,7 @@ function printToHtml(finalPlan) {
     resultRank.setAttribute('id','result-rank');
 
     if (placeRating != undefined) {
-      var replaced = placeName.split(' ').join('_');
+      var replaced = placeName.replace(/\s{2,}/g,"").replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
       var href = 'https://www.google.co.uk/search?q=' + replaced;
       resultPlace.innerHTML = "Day " + (index + 1) + ": " + "<a href='" + href + "' target='_blank'>" + placeName.replace(/\s{2,}/g," "); + "</a>";
       resultRank.innerHTML = "Rating on Google: " + placeRating;
