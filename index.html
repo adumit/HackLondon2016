@@ -73,6 +73,8 @@ $("#scroll-home").click(function() {
 
 
 
+
+
   <!--Start of the body after navigation bar-->
   <div id="div-center">
   	<h1>HACKLONDON</h1>
@@ -84,7 +86,7 @@ $("#scroll-home").click(function() {
         </div>
         <h3>NUMBER OF DAYS</h3>
         <input type="number" placeholder="1" id="number-input" min="1" max="500">
-        <input type="submit" onclick="assignVariables()" value="Search"id="submit-button">
+        <a href="#display-results"><input type="submit" onclick="assignVariables()" value="Search"id="submit-button"></a>
 
 	</div>
   <div id="map" style="visibility:hidden"></div>
@@ -128,12 +130,7 @@ $("#scroll-home").click(function() {
   <div id="display-results">
 		<div id="result-square">
 			<h1>CHOOSE YOUR FAVOURITE!</h1>
-			<div id="individual-result">
-				
-			</div>
-			<div id="individual-result">
-				
-			</div>
+      
 		</div>
 	</div>
 
