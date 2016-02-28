@@ -11,3 +11,9 @@ $("#scroll-home").click(function() {
         scrollTop: $("html").offset().top
     }, 2000);
 });
+
+$("#submit-button").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#display-results").offset().top
+    }, 2000);
+});
