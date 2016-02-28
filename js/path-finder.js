@@ -68,6 +68,7 @@ function getCountry(latitude, longitude) {
   geocoder.geocode({'location': latlng}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
       for (var res in results) {
+        console.log(results[res].formatted_address);
         if (results[res].types.indexOf("country") > -1) {
           countryVar = results[res].formatted_address;
         }
@@ -81,20 +82,24 @@ function assignVariables(){
   latitude = autocomplete.getPlace().geometry.location.lat();
   longitude = autocomplete.getPlace().geometry.location.lng();
   numDays = document.getElementById('number-input').value;
-  cntry = getCountry(latitude, longitude);
-  console.log("numDays = " + String(numDays));
+  var cond = false;
   var cityName = autocomplete.getPlace().name;
-  if (cityName == cntry) {
-    for (var iter = 0; iter < countryArray.length; iter++) {
+  for (var iter = 0; iter < countryArray.length; iter++) {
       if (cityName == countryArray[iter].CountryName) {
         newCity = countryArray[iter].Array[0];
         cityName = newCity.Cityname;
-        latitude = newCity.latitude;
-        longitude = newCity.longitude;
+        latitude = newCity.lat;
+        longitude = newCity.lon;
+        cond = true;
         break;
       }
-    }
   }
+  if (cond) {
+    var cntry = getCountry(latitude, longitude);
+  }
+  console.log("numDays = " + String(numDays));
+  console.log(cityName);
+  console.log(cntry);
   initialize(latitude, longitude);
   setTimeout(function(){
     console.log(autocomplete.getPlace().name);
