@@ -501,11 +501,6 @@ function printToHtml(finalPlan) {
   $('html, body').animate({
         scrollTop: $("#display-results").offset().top
     }, 1000);
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 2fd1c7b396bd49edf932bfe38c2cdcc15f0d18ae
 
 }
 
