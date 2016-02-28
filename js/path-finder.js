@@ -13,8 +13,7 @@ var countryArray =
 {"CountryName":"Finland","Array":[{"Cityname":"helsinki","lat":60.169856,"lon":24.938379},{"Cityname":"rovaniemi","lat":66.503948,"lon":25.729391},{"Cityname":"ivalo","lat":68.657642,"lon":27.539706},{"Cityname":"saariselka","lat":68.419664,"lon":27.410003},{"Cityname":"turku","lat":60.451813,"lon":22.266630},{"Cityname":"tampere","lat":61.497752,"lon":23.760954},{"Cityname":"porvoo","lat":60.393192,"lon":25.665274},{"Cityname":"savonlinna","lat":61.867973,"lon":28.886384},{"Cityname":"kuusamo","lat":65.964588,"lon":29.188665},{"Cityname":"kittila","lat":67.650732,"lon":24.915820}]},
 {"CountryName":"France","Array":[{"Cityname":"Paris","lat":48.856614,"lon":2.352222},{"Cityname":"Nice","lat":43.710173,"lon":7.261953},{"Cityname":"marseille","lat":43.296482,"lon":5.369780},{"Cityname":"bordeaux","lat":44.837789,"lon":-0.579180},{"Cityname":"Strasbourg","lat":48.573405,"lon":7.752111},{"Cityname":"Burgundy","lat":47.052505,"lon":4.383721},{"Cityname":"Avingnon","lat":43.949317,"lon":4.805528},{"Cityname":"chamonix","lat":45.923697,"lon":6.869433},{"Cityname":"Lyon","lat":45.764043,"lon":4.835659},{"Cityname":"Dijon","lat":47.322047,"lon":5.041480}]},
 {"CountryName":"Germany","Array":[{"Cityname":"Berlin","lat":52.520007,"lon":13.404954},{"Cityname":"Frankfurt","lat":50.110922,"lon":8.682127},{"Cityname":"Munich","lat":48.135125,"lon":11.581981},{"Cityname":"hamburg","lat":53.551085,"lon":9.993682},{"Cityname":"nuremberg","lat":49.452030,"lon":11.076750},{"Cityname":"heidelberg","lat":49.398752,"lon":8.672434},{"Cityname":"dresden","lat":51.050409,"lon":13.737262},{"Cityname":"cologne","lat":50.937531,"lon":6.960279},{"Cityname":"dusseldorf","lat":51.227741,"lon":6.773456},{"Cityname":"Garmisch-partenkirchen","lat":47.491695,"lon":11.095498}]},
-{"CountryName":"Greece","Array":[{"Cityname":"Athens","lat":37.983917,"lon":23.729360},{"Cityname":"Santorini","lat":36.393156,"lon":25.461509},{"Cityname":"Rhodes","lat":36.434963,"lon":28.217483},{"Cityname":"Kos","lat":36.891506,"lon":27.287723},{"Cityname":"zakynthos island","lat":37.788160,"lon":20.898827},{"Cityname":"thessalonki","lat":40.640063,"lon":22.944419},{"Cityname":"heraklion","lat":35.338735,"lon":25.144213},{"Cityname":"naxos","lat":37.102103,"lon":25.376114},{"Cityname":"chania","lat":35.513830,"lon":24.018037},{"Cityname":"Delphi","lat":38.480057,"lon":22.494062}]},
-{"CountryName":"Hungary","Array":[{"Cityname":"Budapest","lat":47.497912,"lon":19.040235},{"Cityname":"Lake Balaton","lat":46.830268,"lon":17.734044},{"Cityname":"Szentendre","lat":47.679534,"lon":19.066860},{"Cityname":"Siofok","lat":46.909060,"lon":18.074624},{"Cityname":"Hevis","lat":46.790286,"lon":17.186694},{"Cityname":"Eger","lat":47.902535,"lon":20.377228},{"Cityname":"Sopron","lat":47.681662,"lon":16.584480},{"Cityname":"Esztergom","lat":47.788395,"lon":18.743445},{"Cityname":"Keszthely","lat":46.765472,"lon":17.247955},{"Cityname":"Visegrad","lat":47.782969,"lon":47.782969}]}];
+{"CountryName":"Greece","Array":[{"Cityname":"Athens","lat":37.983917,"lon":23.729360},{"Cityname":"Santorini","lat":36.393156,"lon":25.461509},{"Cityname":"Rhodes","lat":36.434963,"lon":28.217483},{"Cityname":"Kos","lat":36.891506,"lon":27.287723},{"Cityname":"zakynthos island","lat":37.788160,"lon":20.898827},{"Cityname":"thessalonki","lat":40.640063,"lon":22.944419},{"Cityname":"heraklion","lat":35.338735,"lon":25.144213},{"Cityname":"naxos","lat":37.102103,"lon":25.376114},{"Cityname":"chania","lat":35.513830,"lon":24.018037},{"Cityname":"Delphi","lat":38.480057,"lon":22.494062}]}];
 
 var latitude, longitude;
 var cityValueArray = [];
@@ -83,22 +82,10 @@ function assignVariables(){
   numDays = document.getElementById('number-input').value;
   cntry = getCountry(latitude, longitude);
   console.log("numDays = " + String(numDays));
-  var cityName = autocomplete.getPlace().name;
-  if (cityName == cntry) {
-    for (var iter = 0; iter < countryArray.length; iter++) {
-      if (cityName == countryArray[iter].CountryName) {
-        newCity = countryArray[iter].Array[0];
-        cityName = newCity.Cityname;
-        latitude = newCity.latitude;
-        longitude = newCity.longitude;
-        break;
-      }
-    }
-  }
   initialize(latitude, longitude);
   setTimeout(function(){
     console.log(autocomplete.getPlace().name);
-    planTrip(placeArray, cityName, latitude, longitude, cntry);
+    planTrip(placeArray, autocomplete.getPlace().name, latitude, longitude, cntry);
   }, 1000);
 }
 
@@ -496,13 +483,6 @@ function printToHtml(finalPlan) {
     div1.appendChild(resultRank);
 
   }
-  document.getElementById('display-results').style.display = 'initial';
-
-  $('html, body').animate({
-        scrollTop: $("#display-results").offset().top
-    }, 1000);
-
-
 
 }
 
