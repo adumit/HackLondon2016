@@ -14,11 +14,12 @@
 
  
 
-
-  
+  <script type="text/javascript" src="js/path-finder.js"></script>
+  <script type="text/javascript" src="js/jquery-1.12.js"></script>
   <script type="text/javascript" src="js/scroll-to.js"></script>
   <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
   <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/scroll-to.js"></script>
 
 
   
@@ -46,11 +47,28 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#" class="navbar-link" id="scroll-home"><span class="glyphicon glyphicon-home" id="scroll-home"></span><span class="sr-only">(current)</span></a></li>
-          <li><a href="#how-it-works" class="navbar-link" id="scroll-how-it-works"><span class="glyphicon glyphicon-cog" id="scroll-how-it-works"></span></a></li>
+          <li><a href="#" class="navbar-link" id="scroll-how-it-works"><span class="glyphicon glyphicon-cog" id="scroll-how-it-works"></span></a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+
+
+
+<script type="text/javascript">
+$("#scroll-how-it-works").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#how-it-works").offset().top
+    }, 2000);
+});
+</script>
+<script type="text/javascript">
+$("#scroll-home").click(function() {
+    $('html, body').animate({
+        scrollTop: $("html").offset().top
+    }, 2000);
+});
+</script>
 
 
 
@@ -123,8 +141,7 @@
 
 
 
-<script type="text/javascript" src="js/path-finder.js"></script>
-<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+
 <script src="js/bootstrap-datepicker.js"></script>
 <script type="text/javascript">
     // When the document is ready
